@@ -1,0 +1,46 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
+    <mat-card class="box" *ngIf="!loading">
+        <mat-card-header>
+            <mat-card-title>Mi Perfil</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form" *ngFor="let item of array">
+
+            <mat-card-content >
+                <div class="avatar">
+                    <img src="{{item.imgPerfil}}" />
+                </div>
+                <mat-form-field class="example-full-width">
+                    <input value="{{item.nombre}}" matInput type="text" placeholder="Nombre" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input value="{{item.apellido}}" matInput type="text" placeholder="Apellido" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input value="{{item.direccion}}" matInput type="text" placeholder="Direccion" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input value="{{item.ciudad}}" matInput type="text" placeholder="Ciudad" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input value="{{item.provincia}}" matInput type="text" placeholder="Provincia" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input value="{{item.codCriador}}" matInput type="text" placeholder="Codigo criador"
+                        [disabled]="true">
+                </mat-form-field>
+
+
+
+            </mat-card-content>
+            <button mat-stroked-button color="primary" class="btn-block" type="button"
+                (click)="editarPerfil(item)">Editar</button>
+        </form>
+    </mat-card>
+</div>

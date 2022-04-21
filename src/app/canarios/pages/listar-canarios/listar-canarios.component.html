@@ -1,0 +1,56 @@
+<div class="container">
+    <mat-toolbar style="margin-top: 5px;">
+        <span style="margin: auto">Canarios</span>
+        <button mat-raised-button color="primary" [routerLink]="['/canarios/agregarCanarios']">Agregar</button>
+    </mat-toolbar>
+   
+    <mat-card style="margin-top: 3px;">
+        <mat-card-header>
+            <mat-form-field class="buscador">
+                <input matInput placeholder="Buscar..." name="buscadorCanarios" [(ngModel)]="buscadorCanarios">
+            </mat-form-field>
+        </mat-card-header>
+       
+    </mat-card>
+
+    <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%"
+                *ngFor="let item of listadoCanarios | buscador: buscadorCanarios |  paginate: { itemsPerPage: 8, currentPage: pageActual }">
+                <mat-card class="mat-elevation-z4">
+                    <mat-card-header>
+                        <mat-card-title>Canario</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Numero de anillo: <h3>{{item.nAnillo}}</h3>
+                            </li>
+                            <li class="list-group-item">
+                                Linea: <h3>{{item.linea}}</h3>
+                            </li>
+                            <li class="list-group-item">
+                                Procedencia: <h3>{{item.procedencia}}</h3>
+                            </li>
+                            <li class="list-group-item">
+                                Genero: <h3>{{item.genero}}</h3>
+                            </li>
+                        </ul>
+                    </mat-card-content>
+                    <mat-card-actions Align="center">
+                        <button mat-raised-button color="primary" (click)="mostrarCanario(item)">Ver</button>
+                    </mat-card-actions>
+
+                </mat-card>
+            </div>
+
+        </div>
+
+    </div>
+    <div layout=”row” fxLayoutAlign="center center" class="mat-elevation-z4" style="background-color: whitesmoke;">
+        <div flex>
+            <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+    </div>
+
+</div>

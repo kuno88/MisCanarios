@@ -1,0 +1,66 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
+    <mat-card class="box" *ngIf="!loading">
+        <mat-card-header>
+            <mat-card-title>Mi Canario</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form">
+
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.procedencia}}" placeholder="Procedencia">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.colorAnillo}}" placeholder="Color de anillo">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.nAnillo}}" placeholder="Número de anillo">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.sinAnillo}}" placeholder="Descripcion">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.genero}}" placeholder="Gernero">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.linea}}" placeholder="Linea">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.estado}}" placeholder="Estado">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.fechaEstado}}" placeholder="Fecha de estado">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.observacionEstado}}" placeholder="Observacion del estado">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.observaciones}}" placeholder="Observaciones">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput disabled value="{{canario.disponibilidad}}" placeholder="Disponibilidad">
+                </mat-form-field>
+
+
+            </mat-card-content>
+            <button mat-stroked-button color="primary" class="btn-block" type="button"
+                (click)="editarCanario()">Editar</button>
+            <button mat-stroked-button color="accent" class="btn-block" type="button"
+                (click)="eliminarCanario()">Eliminar</button>
+            <button mat-stroked-button color="basic" class="btn-block" type="button"
+                [routerLink]="['/canarios/listarCanarios']">Volver</button>
+
+        </form>
+    </mat-card>
+</div>

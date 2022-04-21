@@ -1,0 +1,28 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
+    <mat-card class="box" *ngIf="!loading">
+        <mat-card-header >
+            <mat-card-title>Registrar canario</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form"  (ngSubmit)="editarPareja()" style="margin-bottom: 10;">
+            
+            <mat-card-content>
+                <mat-form-field class="ancho">
+                    <mat-label>Año de temporada*</mat-label>
+                    <input matInput  placeholder="Ingrese temporada" formControlName="yearSeason">
+                </mat-form-field>
+
+                <mat-form-field class="ancho">
+                    <mat-label>Codigo de jaula*</mat-label>
+                    <input matInput  value="{{pareja.codJaula}}" placeholder="Ingrese identificador" formControlName="codJaula">
+                </mat-form-field>
+
+                
+            </mat-card-content>
+                
+            </form>
+
+    </mat-card>
+
+</div>

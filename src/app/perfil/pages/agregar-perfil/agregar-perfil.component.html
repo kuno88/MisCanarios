@@ -1,0 +1,49 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
+    <mat-card class="box" *ngIf="!loading">
+        <mat-card-header>
+            <mat-card-title>Mi Perfil</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form" [formGroup]="perfilForm" (ngSubmit)="registrarPerfil()">
+
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Nombre" formControlName="nombrePerfil">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Apellido" formControlName="apellidoPerfil">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Direccion" formControlName="direccionPerfil">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Ciudad" formControlName="ciudadPerfil">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Provincia" formControlName="provinciaPerfil">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Codigo criador" formControlName="codCriadorPerfil">
+                </mat-form-field>
+
+
+               <div class="input-file">
+                   <label ></label>
+                   <mat-label>Seleccione una imagen</mat-label>
+                   <input type="file" (change)="handleImage($event)" accept=".jpg,.png,.jpeg"/>
+                   <mat-icon>cloud_upload</mat-icon>
+               </div>
+
+            </mat-card-content>
+            <button [disabled]="perfilForm.invalid" mat-stroked-button color="primary" class="btn-block" type="submit">Aceptar</button>
+            <button mat-stroked-button color="accent" class="btn-block" [routerLink]="['/home/inicio']">Omitir</button>
+
+        </form>
+    </mat-card>
+</div>

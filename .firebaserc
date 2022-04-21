@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mc-m-c31db": {
+      "hosting": {
+        "mc-m": [
+          "mc-m-c31db"
+        ]
+      }
+    }
+  }
+}

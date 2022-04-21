@@ -1,0 +1,39 @@
+.sidenav-container {
+  height: auto; 
+  margin-bottom: 5px;
+  position: sticky;
+}
+
+
+.sidenav {
+  width: 200px;
+  //le da sombras al borde 
+  box-shadow: 3px 0 6px rgb(0, 0, 0, .24);
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.hidden{
+  display: none;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.centrar{
+  position: relative;
+  left: 20%; 
+  display: inline-block;
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}

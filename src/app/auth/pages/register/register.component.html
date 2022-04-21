@@ -1,0 +1,46 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
+  <mat-card class="box" *ngIf="!loading">
+    <mat-card-header>
+      <mat-card-title>Registrarce</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="registrarUsuario()">
+
+      <mat-card-content>
+             
+        <mat-form-field class="example-full-width">
+          <input matInput type="email" placeholder="Ingrese su correo*" formControlName="emailRegister">
+            <mat-error *ngIf="isValidField('emailRegister')">
+            {{getErrorMessage("emailRegister")}}
+          </mat-error> 
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Ingrese su contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordRegister">
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="isValidField('passwordRegister')">
+            {{getErrorMessage("passwordRegister")}}
+          </mat-error>
+      </mat-form-field>
+        <!-- <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Ingrese su contraseña*" formControlName="passwordRegister">
+           <mat-error *ngIf="isValidField('passwordRegister')">
+            {{getErrorMessage("passwordRegister")}}
+          </mat-error>
+        </mat-form-field> -->
+         
+      </mat-card-content>
+
+      <button [disabled]="registerForm.invalid" mat-stroked-button color="primary" class="btn-block"
+        type="submit">Registrar</button>
+
+    </form>
+    <div class="volver">
+    Si ya tienes una cuenta <a [routerLink]="['/auth/loginUsuario']">Ingresar</a>
+  </div>
+  </mat-card>
+</div>

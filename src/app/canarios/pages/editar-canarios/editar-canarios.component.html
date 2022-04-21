@@ -1,0 +1,106 @@
+
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
+    <mat-card class="box" *ngIf="!loading">
+        <mat-card-header >
+            <mat-card-title>Actualizar canario</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form" [formGroup]="formEditCanario" (ngSubmit)="actualizarCanario()" style="margin-bottom: 10;">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Procedencia*</mat-label>
+                    <input matInput formControlName="procedencia" placeholder="Ingrese procedencia">
+                </mat-form-field>
+
+                 <mat-form-field class="example-full-width">
+                    <mat-label>Color anillo</mat-label>
+                    <mat-select formControlName="colorAnillo">
+                        <option value="seleccionar" disabled selected>Seleccionar</option>
+                        <mat-option style="color: purple;" value="violeta">Violeta</mat-option>
+                        <mat-option style="color: green;" value="verde">Verde</mat-option>
+                        <mat-option style="color: black;" value="negro">Negro</mat-option>
+                        <mat-option style="color: red;" value="rojo">Rojo</mat-option>
+                        <mat-option style="color: blue;" value="azul">Azul</mat-option>
+                        <mat-option style="color: orangered;" value="naranja">Naranja</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Numero de anillo</mat-label>
+                    <input matInput type="text" formControlName="nAnillo" placeholder="Ingrese solo numeros"
+                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" >
+                    <mat-label>Sin Anillo</mat-label>
+                    <input matInput formControlName="sinAnillo" placeholder="Ingrese descripcion">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Genero</mat-label>
+                    <mat-select formControlName="genero">
+                        <option value="seleccionar" disabled selected>Seleccionar</option>
+                        <mat-option value="macho">Macho</mat-option>
+                        <mat-option value="hembra">Hembra</mat-option>
+                        <mat-option value="desconocido">Desconocido</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Linea</mat-label>
+                    <input type="text" placeholder="Seleccione linea" matInput [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async " [value]="option.linea">
+                            {{option.codigo}} {{option.linea}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                    <div class="example-container">
+                        <label>Estado*: </label>
+                        <mat-list>
+                            <mat-radio-group formControlName="estado">
+                                <mat-list-item>
+                                    <mat-radio-button value="criadero">Criadero</mat-radio-button>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <mat-radio-button value="muerto">Muerto</mat-radio-button>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <mat-radio-button value="vendido">Vendido</mat-radio-button>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <mat-radio-button value="otro">Otro</mat-radio-button>
+                                </mat-list-item>
+                            </mat-radio-group>
+                        </mat-list>
+                    </div>
+               
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Fecha Estado</mat-label>
+                    <input matInput type="date" formControlName="fechaEstado" placeholder="Ingrese fecha de estado">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Observacion del estado</mat-label>
+                    <textarea matInput formControlName="observacionEstado"></textarea>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Observaciones</mat-label>
+                    <textarea matInput formControlName="observaciones"></textarea>
+                </mat-form-field>
+
+            </mat-card-content>
+            <button [disabled]="formEditCanario.invalid" type="submit" mat-raised-button
+            color="primary">Aceptar</button>
+            <button type="button" mat-raised-button [routerLink]="['/canarios/listarCanarios']"
+            color="accent">Cancelar</button>
+
+        </form>
+
+    </mat-card>
+</div>

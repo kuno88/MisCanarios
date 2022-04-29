@@ -1,15 +1,22 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-spinner diameter="70" class="spinner" style="margin-bottom: 20;" *ngIf="loading"></mat-spinner>
     <mat-card class="box" *ngIf="!loading">
+
+        
         <mat-card-header >
             <mat-card-title>Registrar canario</mat-card-title>
         </mat-card-header>
 
-        <form class="example-form" [formGroup]="formRegistroCanario" (ngSubmit)="agregarCanario()" style="margin-bottom: 10;">
+        <form class="example-form" [formGroup]="formRegistroCanario" (ngSubmit)="agregarCanario()"  style="margin-top: 15;" >
             <mat-card-content>
                 <mat-form-field class="example-full-width">
                     <mat-label>Procedencia*</mat-label>
                     <input matInput formControlName="procedencia" placeholder="Ingrese procedencia">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Temporada*</mat-label>
+                    <input matInput formControlName="temporada" placeholder="Ingrese temporada">
                 </mat-form-field>
 
                  <mat-form-field class="example-full-width">
@@ -86,6 +93,31 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Observacion del estado</mat-label>
                     <textarea matInput formControlName="observacionEstado"></textarea>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Padre</mat-label>
+                    <mat-select formControlName="idPadre" >
+                        <option value="seleccionar" disabled selected>Seleccionar</option>
+                        <mat-option *ngFor="let cana of canariosPadre" [value]="cana.id">
+                            {{cana.nAnillo}} {{cana.linea}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Madre</mat-label>
+                    <mat-select formControlName="idMadre" >
+                        <option value="seleccionar" disabled selected>Seleccionar</option>
+                        <mat-option *ngFor="let cana of canariosMadre" [value]="cana.id">
+                            {{cana.nAnillo}} {{cana.linea}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Postura</mat-label>
+                    <input matInput formControlName="postura" placeholder="Ingrese postura">
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">

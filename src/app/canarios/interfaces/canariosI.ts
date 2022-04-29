@@ -2,7 +2,7 @@ export interface CanarioInterface {
     id?: string,
     usuario?: string|null|undefined,
     procedencia?: string,
-    nAnillo?: string,
+    nAnillo?: number,
     sinAnillo?: string,
     genero?: string,
     linea?: string,
@@ -15,6 +15,11 @@ export interface CanarioInterface {
     observaciones?: string,
     disponibilidad:string;
     fechaCreacion?:Date,
-    fechaActualizacion?:Date
+    fechaActualizacion?:Date,
+    year?:number,
+    cria?:{
+        postura:string,
+        idCria:string
+    }
     //poner un ? en el atributo pepe?:string lo hace opcional
 }

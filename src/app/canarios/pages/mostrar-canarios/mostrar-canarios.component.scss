@@ -1,5 +1,6 @@
 .main-wrapper {
-	height: 130%;
+	height: auto;
+	margin-top: 15px;
 }
 
 .positronx {
@@ -58,14 +59,14 @@
 	width: 100%;
 }
 
-.main-wrapper mat-card-header {
+.main-wrapper .mat-card-header {
 	text-align: center;
 	width: 100%;
 	display: block;
 	font-weight: 700;
 }
 
-.main-wrapper mat-card-header mat-card-title {
+.main-wrapper .mat-card-header .mat-card-title {
 	font-size: 30px;
 	margin: 0;
 }

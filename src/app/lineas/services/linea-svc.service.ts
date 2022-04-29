@@ -19,7 +19,6 @@ export class LineaSvcService {
 
 
   obtenerLineas(): Observable<LineaInterface[]> {
-
     return this.firestore.collection('Lineas').doc('FOCI').collection
     ('Color', ref => ref.orderBy('codigo', 'asc')).snapshotChanges().pipe(
       map(actions=>

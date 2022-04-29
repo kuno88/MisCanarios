@@ -34,7 +34,7 @@ export class PerfilSvcService {
 
 
     }
-    console.log(perfilObj);
+    //console.log(perfilObj);
     //this.firestore.collection('registro-canarios').doc(user).collection('Perfil').add(perfilObj);
     this.firestore.collection('registro-canarios').doc(user).set(perfilObj);
   }

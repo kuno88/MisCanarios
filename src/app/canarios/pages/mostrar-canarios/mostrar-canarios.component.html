@@ -7,9 +7,9 @@
 
         <form class="example-form">
 
-            <mat-card-content>
+            <mat-card-content style="margin-top: 20px;">
                 <mat-form-field class="example-full-width">
-                    <input matInput disabled value="{{canario.procedencia}}" placeholder="Procedencia">
+                    <input matInput disabled value="{{canario.procedencia}}" placeholder="Procedencia" >
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
@@ -50,6 +50,15 @@
 
                 <mat-form-field class="example-full-width">
                     <input matInput disabled value="{{canario.disponibilidad}}" placeholder="Disponibilidad">
+                </mat-form-field>
+
+                <mat-form-field class="example-form">
+                    <input matInput disabled placeholder="Datos del padre">
+                    <button mat-raised-button color="primary" class="btn-block" type="button">Mostrar</button>
+                </mat-form-field>
+                <mat-form-field class="example-form">
+                    <input matInput disabled placeholder="Datos de la madre">
+                    <button mat-raised-button color="primary" class="btn-block" type="button">Mostrar</button>
                 </mat-form-field>
 
 

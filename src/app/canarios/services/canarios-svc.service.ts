@@ -40,9 +40,35 @@ export class CanariosSvcService {
             return { ...data, id };
           }))
       );
-
-
   }
+  obtenerPadre(usuario: string | null): Observable<CanarioInterface[]> {
+    return this.firestore.collection('registro-canarios').doc(usuario?.toString())
+      .collection('Canarios',ref => ref.
+      where('genero', '==', 'macho').
+      where('estado', '==', 'criadero')).snapshotChanges().pipe(
+        map(action =>
+          action.map(a => {
+            const data = a.payload.doc.data() as CanarioInterface;
+            const id = a.payload.doc.id;
+            return { ...data, id };
+          }))
+      );
+  }
+  obtenerMadre(usuario: string | null): Observable<CanarioInterface[]> {
+    return this.firestore.collection('registro-canarios').doc(usuario?.toString())
+      .collection('Canarios',ref => ref.
+      where('genero', '==', 'hembra').
+      where('estado', '==', 'criadero')).snapshotChanges().pipe(
+        map(action =>
+          action.map(a => {
+            const data = a.payload.doc.data() as CanarioInterface;
+            const id = a.payload.doc.id;
+            return { ...data, id };
+          }))
+      );
+  }
+
+
   getAllFemale(usuario: string | null): Observable<CanarioInterface[]> {
     return this.firestore.collection('registro-canarios').doc(usuario?.toString())
       .collection('Canarios', ref => ref.where('genero', '==', "hembra")).snapshotChanges().pipe(
@@ -57,6 +83,14 @@ export class CanariosSvcService {
 
   }
 
+  //prueba de recuperar id
+  crearRegistro(canario : CanarioInterface):Promise<any>{
+    return this.firestore.collection('registro-canarios').doc(canario.usuario?.toString())
+    .collection('Canarios').add(canario).then(docRef=>{
+      console.log("Document written with ID: ", docRef.id);
+    });
+  
+  }
 
   //crea un nuevo registro con un id usuario en la coleccion canarios
   createregisterBird(canario: CanarioInterface): Promise<any> {
@@ -78,5 +112,7 @@ export class CanariosSvcService {
     return this.firestore.collection('registro-canarios').doc(usuario?.toString()).collection('Canarios').
       doc(id).snapshotChanges();
   }
+
+
 
 }

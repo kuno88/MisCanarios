@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule} from '@angular/fire/compat/storage'
 //componentes
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+
 //material module
 import { LayoutModule } from '@angular/cdk/layout';
 import { environment } from 'src/environments/environment';
@@ -19,8 +19,6 @@ import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    
   ],
   imports: [
     BrowserModule,

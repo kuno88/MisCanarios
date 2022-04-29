@@ -19,10 +19,14 @@ export class AgregarCanariosComponent implements OnInit {
   user: firebase.User | undefined;
   //keyword = "name";
   lineaArray: LineaInterface[] = [];
+  canariosPadre: CanarioInterface[] = [];
+  canariosMadre: CanarioInterface[] = [];
+  //canariosArray : Observable<CanarioInterface[]>|undefined
   filteredOptions: Observable<LineaInterface[]> | undefined;
   formRegistroCanario: FormGroup;
   myControl = new FormControl();
   loading = false;
+  
 
   constructor(private fb: FormBuilder, private lin: LineaSvcService, private afauth: AngularFireAuth,
     private canarioSvc: CanariosSvcService, private router: Router) {
@@ -36,7 +40,14 @@ export class AgregarCanariosComponent implements OnInit {
       observacionEstado: [''],
       colorAnillo: [''],
       observaciones: [''],
-      usuario: ['']
+      usuario: [''],
+      idPadre: [''],
+      idMadre:[''],
+      temporada:[''],
+      cria:{
+        postura:[''],
+        idCria:['']
+      }
 
     })
   }
@@ -46,12 +57,25 @@ export class AgregarCanariosComponent implements OnInit {
     this.afauth.user.subscribe(user => {
       if (user) {
         this.user = user;
+        this.canarioSvc.obtenerPadre(this.user.email).subscribe(data1 =>{
+         // console.log("CanaPadre",data1)
+          this.canariosPadre=data1;
+        })
+        this.canarioSvc.obtenerMadre(this.user.email).subscribe(data2 => {
+          //console.log("CanaMadre", data2);
+          this.canariosMadre = data2
+        }
+       )
       }
     })
 
+    /* this.canarioSvc.newGetAllCanarios(this.user?.email).subscribe(canarios =>{
+       console.log("Prueba1",canarios);
+       this.canariosArray=canarios;})
+ */
     this.lin.obtenerLineas().subscribe(
       contenido => {
-        //console.log(contenido);
+        //console.log("Prueba2", contenido);
         this.lineaArray = contenido;
       }
     )
@@ -84,12 +108,20 @@ export class AgregarCanariosComponent implements OnInit {
         observacionEstado: this.formRegistroCanario.value.observacionEstado,
         observaciones: this.formRegistroCanario.value.observaciones,
         disponibilidad: 'libre',
+        idPadre: this.formRegistroCanario.value.idPadre,
+        idMadre:this.formRegistroCanario.value.idMadre,
         fechaCreacion: new Date(),
         fechaActualizacion: new Date(),
+        year: this.formRegistroCanario.value.temporada,
+        cria:{
+          postura: this.formRegistroCanario.value.postura,
+          idCria:"prueba"
+        }
 
       }
       if (canario) {
-        await this.canarioSvc.createregisterBird(canario).then();
+        //await this.canarioSvc.createregisterBird(canario).then();
+        await this.canarioSvc.crearRegistro(canario).then();
         this.fakeLoading();
       } else {
         this.msjError();
